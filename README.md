@@ -1,4 +1,4 @@
-# Fokker-Planck Equation Solver
+# Time-Dependent Fokker-Planck Equation Solver
 
 ## About the code
 
