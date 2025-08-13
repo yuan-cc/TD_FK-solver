@@ -4,7 +4,7 @@ from scipy.linalg import solve
 class FK_TriDiagonalMatrix:
     def __init__(self):
         
-        self.beta = 0.55
+        self.beta = 0.5
         self.c0 = 3e10 # c
         self.mp = 1.6e-24 # gram
         self.N_decade = 25
