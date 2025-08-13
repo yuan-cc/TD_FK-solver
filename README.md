@@ -14,6 +14,8 @@ The test cases can be run directly without installation of the solver:
 python test.py
 ```
 
+Contact Chengchao Yuan (chengchao.yuan@desy.de) for any questions with this code.
+
 ## Requirements
 
 The following Python packages are required:
