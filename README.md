@@ -12,3 +12,16 @@ The test cases can be run directly without installation of the solver:
 
 ```bash
 python test.py
+```
+
+## Requirements
+
+The following Python packages are required:
+
+- `scipy`
+- `numpy` 
+- `matplotlib`
+
+## Citation
+
+Please cite the paper [Coupled Time-Dependent Proton Acceleration and Leptonic-Hadronic Radiation in Turbulent Supermassive Black Hole Coronae](https://arxiv.org/abs/2508.08233) when using the code in your work.
