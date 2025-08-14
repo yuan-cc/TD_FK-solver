@@ -7,7 +7,6 @@ import matplotlib.colors as mcolors
 FKT = FK_TriDiagonalMatrix()
 
 proton_momentum = FKT.p_grid # momentum array, proton_momentum * light speed (3e10) = proton energy in ergs!
-print(len(proton_momentum))          
 
 p_pk_c = 1e7 * FKT.mp * FKT.c0
 tacc = 1e6 * (proton_momentum / p_pk_c)**1
