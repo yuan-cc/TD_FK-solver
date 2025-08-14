@@ -3,7 +3,7 @@
 ## About the code
 
 - `Fokker_Planck.py`: Implements a tridiagonal matrix solver for time-dependent and steady-state Fokker-Planck equations
-- `test.py`: Test case with a injection rate $q(p)\propto p exp(-p/p_{\rm inj})$
+- `test.py`: Test case with a injection rate $q(p)\propto p \exp(-p/p_{\rm inj})$
 - `test_inj.py`: Test case with a delta-function injection rate $q(p)\propto \delta(p-p_{\rm inj})$
 
 ## Requirements
