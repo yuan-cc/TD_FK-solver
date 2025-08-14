@@ -16,7 +16,7 @@ t_esc = 2e5 + np.zeros_like(proton_momentum)
 
 injection = np.zeros_like(proton_momentum)
 
-E_pk = 1.0e2 # 1.0e3 m_p*c^2,  p_pk = 1.0e2 x m_p*c
+E_pk = 1.0e2 # 1.0e2 m_p*c^2,  p_pk = 1.0e2 x m_p*c
 erg2GeV = 624.0
 c0 = 3.0e10
 
@@ -30,9 +30,6 @@ delta_t = 0.01 * t_esc[0]
 runtime = 0.0
 
 
-
-
-#t_list = np.array([0.1, 0.2, 0.3,0.4,0.5,0.6,0.7,0.8,0.9, 1, 2, 3, 4, 5, 6, 7,8, 9, 10])* t_esc[0] 
 t_list = 10**np.arange(np.log10(0.1*t_esc[0]), np.log10(10*t_esc[0])+0.05, 0.05) ## for making the figure
 
 spec =[proton_momentum, injection]
@@ -79,7 +76,7 @@ data2 = FKT.FinalSpecS
 fig, ax = plt.subplots(figsize=(8, 5)) 
 ax.loglog()
 for i in range(len(X_values)):
-    ax.plot(data[:,0] * 3e10 * 624, data[:,i+1] * data[:,0]**3 * 4 * 3.14 * Norm1, lw = 1, color=cmap(log_norm(X_values[i])))
+    ax.plot(data[:,0] * 3e10 * 624, data[:,i+1] * data[:,0]**3 * 4 * 3.14 * Norm1, lw = 1, color=cmap(log_norm(X_values[i]))) # X: E_p in GeV; Y: EdN/dE [cm^-3]
     
 sm = cm.ScalarMappable(cmap=cmap, norm=log_norm)
 sm.set_array([])
@@ -100,7 +97,7 @@ ax.set_title("Test case: time-dependent v.s. steady-state", fontsize = 12)
 ax.tick_params(axis='both', which='major', labelsize=14)  
 
 
-inset_pos = [0.21, 0.67, 0.3, 0.25] # position of the inset
+inset_pos = [0.21, 0.67, 0.3, 0.25] # position of the inset, for the rates
 ax_inset = fig.add_axes(inset_pos)
 ax_inset.plot(data[:,0] * 3e10 * 624, 1.0/tcool, lw = 2,color = "blue",  label = r"$t_{\rm cool}^{-1}$")
 ax_inset.plot(data[:,0] * 3e10 * 624, 1.0/tacc, lw = 2, color = "green", label = r"$t_{\rm acc}^{-1}$")
