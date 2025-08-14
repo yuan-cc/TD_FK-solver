@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.linalg import solve
 
-class FK_TriDiagonalMatrix:
+class FP_TriDiagonalMatrix:
     def __init__(self):
         
         self.beta = 0.5
