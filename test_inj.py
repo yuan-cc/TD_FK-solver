@@ -24,19 +24,17 @@ c0 = 3.0e10
 p_pk = E_pk / erg2GeV / c0
 injection = np.zeros_like(proton_momentum) 
 
+## use a narrow box function to approximate delta function
 for i in range(len(injection)):
     if proton_momentum[i] <= p_pk * (1.1) and proton_momentum[i] >= p_pk /1.1:
         injection[i]=1
 
-
-#delta_t = min(0.01 * t_esc[0], 0.1 * tcool[-1])
-delta_t = 0.01 * t_esc[0] 
+delta_t = 0.01 * t_esc[0] # time step
 runtime = 0.0
 
 
 
 
-#t_list = np.array([0.1, 0.2, 0.3,0.4,0.5,0.6,0.7,0.8,0.9, 1, 2, 3, 4, 5, 6, 7,8, 9, 10])* t_esc[0] 
 t_list = 10**np.arange(np.log10(0.1*t_esc[0]), np.log10(10*t_esc[0])+0.05, 0.05) ## for making the figure
 
 spec =[proton_momentum, injection]
