@@ -78,10 +78,10 @@ class FK_TriDiagonalMatrix:
                 
                 
             ### Chang-Cooper weighting
-            w = delta_xi * self.CoolingArray[i]/ self.DiffusionArray[i]
+            w = delta_xi * self.CoolingArray[i]/ self.DiffusionArray[i] ## positive 
             if w < 1e-4:
                 theta = 0.5
-            if w > 10000:
+            if w > 1000:
                 theta = 0
             else:
                 theta = 1/w - 1/(np.exp(w)-1)
