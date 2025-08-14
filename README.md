@@ -22,8 +22,14 @@ The test cases can be run directly without installation of the solver:
 python test.py
 ```
 
+and 
+
+```bash
+python test_inj.py
+```
+
 Contact Chengchao Yuan (chengchao.yuan@desy.de) for any questions with this code.
 
 ## Citation
 
-Please cite the paper [Coupled Time-Dependent Proton Acceleration and Leptonic-Hadronic Radiation in Turbulent Supermassive Black Hole Coronae](https://arxiv.org/abs/2508.08233) when using the code in your work.
+Please cite the paper [Coupled Time-Dependent Proton Acceleration and Leptonic-Hadronic Radiation in Turbulent Supermassive Black Hole Coronae](https://arxiv.org/abs/2508.08233) when using the code in your work. Have fun!
