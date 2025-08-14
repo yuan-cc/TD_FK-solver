@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from Fokker_Planck import FK_TriDiagonalMatrix
+from Fokker_Planck import FP_TriDiagonalMatrix
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
 
