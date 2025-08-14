@@ -1,14 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from Fokker_Planck import FK_TriDiagonalMatrix
+from Fokker_Planck import FP_TriDiagonalMatrix
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
 
-FKT = FK_TriDiagonalMatrix()
+FPT = FP_TriDiagonalMatrix()
 
-proton_momentum = FKT.p_grid # momentum array, proton_momentum * light speed (3e10) = proton energy in ergs!
+proton_momentum = FPT.p_grid # momentum array, proton_momentum * light speed (3e10) = proton energy in ergs!
 
-p_pk_c = 1e7 * FKT.mp * FKT.c0
+p_pk_c = 1e7 * FPT.mp * FPT.c0
 tacc = 1e6 * (proton_momentum / p_pk_c)**1
 tcool = 1e4 * (proton_momentum / p_pk_c)**-1
 t_esc = 2e5 + np.zeros_like(proton_momentum)
@@ -40,31 +40,31 @@ spec =[proton_momentum, injection]
 
 while runtime < 10.2 * t_esc[0]:
     # update the input arrays
-    FKT.InjectionArray = injection # dot q
-    FKT.DiffusionArray = proton_momentum**2 / tacc # D_pp = p^2 / t_acc
-    FKT.EscapeArray = t_esc # t_esc in s
-    FKT.CoolingArray =   proton_momentum / tcool # dot p
+    FPT.InjectionArray = injection # dot q
+    FPT.DiffusionArray = proton_momentum**2 / tacc # D_pp = p^2 / t_acc
+    FPT.EscapeArray = t_esc # t_esc in s
+    FPT.CoolingArray =   proton_momentum / tcool # dot p
     
     ## evolut the time dependent FP equation by delta_t
-    FKT.FP_T_evolve(delta_t)
+    FPT.FP_T_evolve(delta_t)
     
     for j in t_list:
         if runtime < j and runtime + delta_t >= j:
-            spec.append(FKT.FinalSpec) # for the figure
+            spec.append(FPT.FinalSpec) # for the figure
             
-    FKT.InitialSpec = FKT.FinalSpec # assign the evolved proton spectra to the initial distribution for next evolution
+    FPT.InitialSpec = FPT.FinalSpec # assign the evolved proton spectra to the initial distribution for next evolution
     runtime += delta_t
     
 
-FKT.FP_S_evolve() # find the steady-state solution using the existing FKT.InjectionArray, FKT.DiffusionArray, FKT.EscapeArray, FKT.CoolingArray
-                  # accelerated spectra: FKT.FinalSpecS
+FPT.FP_S_evolve() # find the steady-state solution using the existing FPT.InjectionArray, FPT.DiffusionArray, FPT.EscapeArray, FPT.CoolingArray
+                  # accelerated spectra: FPT.FinalSpecS
 
 
 LuminosityDensity =  1500 # an arbrary value to make the spectra look beautiful, erg/s/cm^3
 
 # normalization
-Norm1 = FKT.normalize_factor(LuminosityDensity, FKT.FinalSpec)
-Norm2 = FKT.normalize_factor(LuminosityDensity, FKT.FinalSpecS)
+Norm1 = FPT.normalize_factor(LuminosityDensity, FPT.FinalSpec)
+Norm2 = FPT.normalize_factor(LuminosityDensity, FPT.FinalSpecS)
 
 
 ### Make a fancy figure
@@ -74,7 +74,7 @@ X_values = t_list / t_esc[0]
 
 cmap = cm.inferno_r
 log_norm = mcolors.LogNorm(vmin=X_values.min(), vmax=X_values.max())
-data2 = FKT.FinalSpecS
+data2 = FPT.FinalSpecS
 
 
 fig, ax = plt.subplots(figsize=(8, 5)) 
